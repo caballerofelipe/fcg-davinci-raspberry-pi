@@ -10,6 +10,10 @@ def setup():
 # Define a main function for main process
 def main():
     while True:
+        # FCG: this is correct because the LED is turned on using this command intially:
+        #   GPIO.setup(LedPin, GPIO.OUT, initial=GPIO.HIGH)
+        # But otherwise this command turns off the LED:
+        #   GPIO.output(LedPin, GPIO.LOW)
         print ('...LED ON')
         # Turn on LED
         GPIO.output(LedPin, GPIO.LOW)
@@ -23,7 +27,7 @@ def destroy():
     # Turn off LED
     GPIO.output(LedPin, GPIO.HIGH)
     # Release resource
-    GPIO.cleanup()                   
+    GPIO.cleanup()
 # If run this script directly, do:
 if __name__ == '__main__':
     setup()
